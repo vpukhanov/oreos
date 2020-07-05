@@ -17,13 +17,6 @@ pub extern "C" fn _start() -> ! {
 
     oreos::init();
 
-    fn stack_overflow() {
-        stack_overflow();
-    }
-
-    // trigger a stack overflow
-    stack_overflow();
-
     #[cfg(test)]
     test_main();
 
