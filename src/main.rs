@@ -4,14 +4,16 @@
 #![test_runner(oreos::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
+use bootloader::{entry_point, BootInfo};
 use core::panic::PanicInfo;
 
 use oreos::println;
 
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
+entry_point!(kernel_main);
+
+fn kernel_main(boot_info: &'static BootInfo) -> ! {
     println!("OreOS v{}", VERSION);
     println!("Hello from _start()!");
 
